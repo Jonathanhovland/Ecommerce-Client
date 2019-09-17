@@ -1,13 +1,13 @@
 import React from "react"
 
-const Home = () => {
+const Products = () => {
     return (
         <div className="App">
             <header className="App-header">
-                <h1>Welcome Home!</h1>
+                <h1>Welcome to Products!</h1>
             </header>
         </div>
     )
 }
 
-export default Home 
+export default Products 
