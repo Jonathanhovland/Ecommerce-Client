@@ -1,9 +1,12 @@
 import React, { Component } from "react"
+
 import Card from "../Card"
+import Loader from "../Loader"
 
 class ProductDetail extends Component {
     state = {
-        product: {}
+        product: {},
+        isLoaded: false
     }
 
     // fetch data from ONE product
@@ -15,7 +18,8 @@ class ProductDetail extends Component {
             .then(data => {
                 console.log(data)
                 this.setState({
-                    product: data.product
+                    product: data.product,
+                    isLoaded: true
                 })
             })
             .catch(error => {
@@ -27,12 +31,15 @@ class ProductDetail extends Component {
         return(
             <div>
                 <h2>Product Detail</h2>
-                <Card>
-                    <h2>{this.state.product.name}</h2>
-                    <img src={this.state.product.img_url} alt="product"/>
-                    <p>{this.state.product.description}</p>
-                    <h3>Price: ${this.state.product.price / 100}.00</h3>
-                </Card>
+                {this.state.isLoaded ?
+                    <Card>
+                        <h2>{this.state.product.name}</h2>
+                        <img src={this.state.product.img_url} alt="product"/>
+                        <p>{this.state.product.description}</p>
+                        <h3>Price: ${this.state.product.price / 100}.00</h3>
+                    </Card>
+                :<Loader />
+                }
             </div>
         )
     }
