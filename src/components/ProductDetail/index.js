@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import Card from "../Card"
 
 class ProductDetail extends Component {
     state = {
@@ -24,7 +25,15 @@ class ProductDetail extends Component {
 
     render() {
         return(
-            <h2>Product ID: {this.state.product.id} </h2>
+            <div>
+                <h2>Product Detail</h2>
+                <Card>
+                    <h2>{this.state.product.name}</h2>
+                    <img src={this.state.product.img_url} alt="product"/>
+                    <p>{this.state.product.description}</p>
+                    <h3>Price: ${this.state.product.price / 100}.00</h3>
+                </Card>
+            </div>
         )
     }
 }
